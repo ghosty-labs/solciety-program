@@ -1,18 +1,12 @@
-
-use anchor_lang::{prelude::*};
-
+use anchor_lang::{prelude::*, error_code};
 
 declare_id!("Hagbeh44aCHDPxRD7SrVsnPZUCkRApcYUUqjRLATJruX");
 
 #[program]
 pub mod solsociety {
-  use anchor_lang::solana_program::entrypoint::ProgramResult;
-
-use crate::ErrorCode;
 
 use super::*;
-
-  pub fn send_post(ctx: Context<SendPost>, topic: String, content: String) -> ProgramResult {
+  pub fn send_post(ctx: Context<SendPost>, topic: String, content: String) -> Result<()> {
     let post: &mut Account<Post> = &mut ctx.accounts.post;
     let author: &Signer = &ctx.accounts.author;
     let clock: Clock = Clock::get().unwrap();
