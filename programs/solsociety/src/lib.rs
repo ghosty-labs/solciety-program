@@ -5,7 +5,7 @@ pub mod state;
 pub mod errors;
 pub mod instructions;
 
-declare_id!("68QdLtNoJHW9ACDAXs1L1Rt8zfB6h1LtRxbH1BDp7VQJ");
+declare_id!("6sTexXR4daCeaGPL6dBpaVhadBMjU9fMkpUhSP4MGEEs");
 
 #[program] 
 pub mod solsociety {

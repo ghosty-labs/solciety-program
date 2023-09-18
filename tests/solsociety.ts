@@ -28,7 +28,7 @@ describe("Post", () => {
   anchor.setProvider(anchor.AnchorProvider.local());
 
   it("can send post", async () => {
-    const post = await sendPost(user, "Test Post #1", "Test Tag #1");
+    const post = await sendPost(user, "tag", "Test Content #1");
 
     assert.equal(post.account.user.toBase58(), user.publicKey.toBase58());
   });
