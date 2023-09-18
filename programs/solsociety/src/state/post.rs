@@ -2,9 +2,9 @@ use anchor_lang::prelude::*;
 
 #[account]
 pub struct Post {
-  pub user: PubKey,
+  pub user: Pubkey,
   pub timestamp: i64,
-  pub state: Option,
+  pub state: Option<PostState>,
   pub tag: String,
   pub content: String,
 }

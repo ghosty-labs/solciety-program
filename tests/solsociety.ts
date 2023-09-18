@@ -30,6 +30,6 @@ describe("Post", () => {
   it("can send post", async () => {
     const post = await sendPost(user, "Test Post #1", "Test Tag #1");
 
-    // assert.equal(post.account.(user as any).toBase58(), user.publicKey.toBase58());
+    assert.equal(post.account.user.toBase58(), user.publicKey.toBase58());
   });
 });
