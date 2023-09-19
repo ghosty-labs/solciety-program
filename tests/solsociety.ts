@@ -39,7 +39,7 @@ describe("Post", () => {
   it("can send and update post", async () => {
     const newUser = await createUser();
 
-    const post = await sendPost(
+    const post: any = await sendPost(
       newUser,
       "before",
       "Test Content Send and Update #1"
@@ -68,7 +68,7 @@ describe("Post", () => {
   it("can send and delete post", async () => {
     const userOne = await createUser();
 
-    const post = await sendPost(
+    const post: any = await sendPost(
       userOne,
       "deletetag",
       "Test Content Send and Delete #1"
@@ -85,7 +85,7 @@ describe("Post", () => {
       .signers([userOne])
       .rpc();
 
-    const deletedPost = await program.account.post.fetch(post.publicKey);
+    const deletedPost: any = await program.account.post.fetch(post.publicKey);
     assert.equal(deletedPost.tag, "[deleted]");
     assert.equal(deletedPost.content, "");
   });

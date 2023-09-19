@@ -22,4 +22,16 @@ pub mod solsociety {
   pub fn delete_post(ctx: Context<DeletePost>) -> Result<()> {
     instructions::delete_post(ctx)
   }
+
+  pub fn send_comment(ctx: Context<SendComment>, post: Pubkey, content: String, parent: Option<Pubkey>) -> Result<()> {
+    instructions::send_comment(ctx, post, content, parent)
+  }
+
+  pub fn update_comment(ctx: Context<UpdateComment>, new_content: String) -> Result<()> {
+    instructions::update_comment(ctx, new_content)
+  }
+
+  pub fn delete_comment(ctx: Context<DeleteComment>) -> Result<()> {
+    instructions::delete_comment(ctx)
+  }
 }
