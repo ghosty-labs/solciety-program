@@ -15,7 +15,11 @@ pub mod solsociety {
     instructions::send_post(ctx, tag, content)
   }
 
-  pub fn update_post(ctx: Context<SendPost>, new_tag: String, new_content: String) -> Result<()> {
-    instructions::send_post(ctx, new_tag, new_content)
+  pub fn update_post(ctx: Context<UpdatePost>, new_tag: String, new_content: String) -> Result<()> {
+    instructions::update_post(ctx, new_tag, new_content)
+  }
+
+  pub fn delete_post(ctx: Context<DeletePost>) -> Result<()> {
+    instructions::delete_post(ctx)
   }
 }
