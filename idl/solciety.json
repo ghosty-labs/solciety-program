@@ -1,0 +1,157 @@
+{
+  "version": "0.1.0",
+  "name": "solsociety",
+  "instructions": [
+    {
+      "name": "sendPost",
+      "accounts": [
+        {
+          "name": "post",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "tag",
+          "type": "string"
+        },
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "updatePost",
+      "accounts": [
+        {
+          "name": "post",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": [
+        {
+          "name": "newTag",
+          "type": "string"
+        },
+        {
+          "name": "newContent",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "deletePost",
+      "accounts": [
+        {
+          "name": "post",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "user",
+          "isMut": false,
+          "isSigner": true
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Post",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "user",
+            "type": "publicKey"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          },
+          {
+            "name": "state",
+            "type": {
+              "option": {
+                "defined": "PostState"
+              }
+            }
+          },
+          {
+            "name": "tag",
+            "type": "string"
+          },
+          {
+            "name": "content",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "PostState",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "Edited"
+          },
+          {
+            "name": "Deleted"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TooLong",
+      "msg": "Exceeding maximum number of allowed characters"
+    },
+    {
+      "code": 6001,
+      "name": "UnallowedChars",
+      "msg": "Your content contains unallowed characters"
+    },
+    {
+      "code": 6002,
+      "name": "NoContent",
+      "msg": "Please provide content to post"
+    },
+    {
+      "code": 6003,
+      "name": "NothingChanged",
+      "msg": "No update detected"
+    },
+    {
+      "code": 6004,
+      "name": "AliasPresent",
+      "msg": "Alias already exist"
+    }
+  ],
+  "metadata": {
+    "address": "6sTexXR4daCeaGPL6dBpaVhadBMjU9fMkpUhSP4MGEEs"
+  }
+}

@@ -31,7 +31,7 @@ const main = async () => {
 
   const user = provider.wallet;
 
-  const idl = require("../target/idl/solsociety.json");
+  const idl = require("../idl/solciety.json");
   const programId = new solanaWeb3.PublicKey(
     "6sTexXR4daCeaGPL6dBpaVhadBMjU9fMkpUhSP4MGEEs"
   );
