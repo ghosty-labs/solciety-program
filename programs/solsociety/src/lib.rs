@@ -14,4 +14,8 @@ pub mod solsociety {
   pub fn send_post(ctx: Context<SendPost>, tag: String, content: String) -> Result<()> {
     instructions::send_post(ctx, tag, content)
   }
+
+  pub fn update_post(ctx: Context<SendPost>, new_tag: String, new_content: String) -> Result<()> {
+    instructions::send_post(ctx, new_tag, new_content)
+  }
 }
