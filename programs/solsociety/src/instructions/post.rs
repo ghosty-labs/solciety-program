@@ -44,7 +44,7 @@ pub fn delete_post(ctx: Context<DeletePost>) -> Result<()> {
   let post = &mut ctx.accounts.post;
 
   post.state = Some(PostState::Deleted);
-  post.tag = "[deleted}".to_string();
+  post.tag = "[deleted]".to_string();
   post.content = "".to_string();
 
   Ok(())
