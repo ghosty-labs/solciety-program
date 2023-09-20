@@ -9,7 +9,7 @@ solsociety = "6sTexXR4daCeaGPL6dBpaVhadBMjU9fMkpUhSP4MGEEs"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/solsociety.json"
 
 [scripts]
