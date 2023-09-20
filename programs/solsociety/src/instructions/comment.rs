@@ -24,7 +24,7 @@ pub fn send_comment(ctx: Context<SendComment>, post: Pubkey, content: String, pa
     "parent": &comment.parent.to_string(),
     "content": &comment.content, 
   });
-  msg!("LOGS_SEND_COMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
+  msg!("SOLCIETYLOGS_SENDCOMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
 
   Ok(())
 }
@@ -43,7 +43,7 @@ pub fn update_comment(ctx: Context<UpdateComment>, new_content: String) -> Resul
     "key": account_info.key.to_string(), 
     "content": &comment.content, 
   });
-  msg!("LOGS_UPDATE_COMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
+  msg!("SOLCIETYLOGS_UPDATECOMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
 
   Ok(())
 }
@@ -59,7 +59,7 @@ pub fn delete_comment(ctx: Context<DeleteComment>) -> Result<()> {
     "key": account_info.key.to_string(), 
     "content": &comment.content, 
   });
-  msg!("LOGS_DELETE_COMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
+  msg!("SOLCIETYLOGS_DELETECOMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
 
   Ok(())
 }

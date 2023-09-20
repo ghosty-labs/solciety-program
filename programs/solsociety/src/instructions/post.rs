@@ -30,7 +30,7 @@ pub fn send_post(ctx: Context<SendPost>, mut tag: String, content: String) -> Re
     "content": &post.content, 
     "timestamp": &post.timestamp
   });
-  msg!("LOGS_SEND_POST::{:?}", serde_json::to_string_pretty(&logs));
+  msg!("SOLCIETYLOGS_SENDPOST::{:?}", serde_json::to_string_pretty(&logs));
 
   Ok(())
 }
@@ -54,7 +54,7 @@ pub fn update_post(ctx: Context<UpdatePost>, new_tag: String, new_content: Strin
     "tag": &post.tag, 
     "content": &post.content, 
   });
-  msg!("LOGS_UPDATE_POST::{:?}", serde_json::to_string_pretty(&logs)); 
+  msg!("SOLCIETYLOGS_UPDATEPOST::{:?}", serde_json::to_string_pretty(&logs)); 
 
   Ok(())
 }
@@ -72,7 +72,7 @@ pub fn delete_post(ctx: Context<DeletePost>) -> Result<()> {
     "tag": &post.tag, 
     "content": &post.content, 
   });
-  msg!("LOGS_DELETE_POST::{:?}", serde_json::to_string_pretty(&logs)); 
+  msg!("SOLCIETYLOGS_DELETEPOST::{:?}", serde_json::to_string_pretty(&logs)); 
 
   Ok(())
 }

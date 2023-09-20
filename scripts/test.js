@@ -41,7 +41,7 @@ const main = async () => {
   const userTwo = solanaWeb3.Keypair.generate();
 
   const post = await program.methods
-    .sendPost("Tag7", "Content Example 7")
+    .sendPost("Tag8", "Content Example 8")
     .accounts({
       post: userTwo.publicKey,
       user: user.publicKey,
