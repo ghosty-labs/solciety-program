@@ -1,6 +1,7 @@
 use anchor_lang::prelude::*;
 use crate::state::post::*;
 use crate::errors::ErrorCode;
+use serde_json::json;
 
 pub fn send_post(ctx: Context<SendPost>, mut tag: String, content: String) -> Result<()> {
   let post = &mut ctx.accounts.post;
@@ -21,6 +22,16 @@ pub fn send_post(ctx: Context<SendPost>, mut tag: String, content: String) -> Re
   post.tag = tag.to_lowercase();
   post.content = content;
 
+  let account_info = &post.to_account_info();
+  let logs = json!({
+    "key": account_info.key.to_string(), 
+    "user": &post.user.to_string(), 
+    "tag": &post.tag, 
+    "content": &post.content, 
+    "timestamp": &post.timestamp
+  });
+  msg!("LOGS_SEND_POST::{:?}", serde_json::to_string_pretty(&logs));
+
   Ok(())
 }
 
@@ -37,6 +48,14 @@ pub fn update_post(ctx: Context<UpdatePost>, new_tag: String, new_content: Strin
   post.tag = new_tag;
   post.content = new_content;
 
+  let account_info = &post.to_account_info();
+  let logs = json!({
+    "key": account_info.key.to_string(), 
+    "tag": &post.tag, 
+    "content": &post.content, 
+  });
+  msg!("LOGS_UPDATE_POST::{:?}", serde_json::to_string_pretty(&logs)); 
+
   Ok(())
 }
 
@@ -46,6 +65,14 @@ pub fn delete_post(ctx: Context<DeletePost>) -> Result<()> {
   post.state = Some(PostState::Deleted);
   post.tag = "[deleted]".to_string();
   post.content = "".to_string();
+
+  let account_info = &post.to_account_info();
+  let logs = json!({
+    "key": account_info.key.to_string(), 
+    "tag": &post.tag, 
+    "content": &post.content, 
+  });
+  msg!("LOGS_DELETE_POST::{:?}", serde_json::to_string_pretty(&logs)); 
 
   Ok(())
 }

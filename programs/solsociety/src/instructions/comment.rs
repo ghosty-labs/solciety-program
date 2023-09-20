@@ -1,6 +1,7 @@
 use anchor_lang::prelude::*;
 use crate::state::comment::*;
 use crate::errors::ErrorCode;
+use serde_json::json;
 
 pub fn send_comment(ctx: Context<SendComment>, post: Pubkey, content: String, parent: Option<Pubkey>) -> Result<()> {
   let comment = &mut ctx.accounts.comment;
@@ -15,6 +16,16 @@ pub fn send_comment(ctx: Context<SendComment>, post: Pubkey, content: String, pa
   comment.timestamp = clock.unix_timestamp;
   comment.content = content;
 
+  let account_info = &comment.to_account_info();
+  let logs = json!({
+    "key": account_info.key.to_string(), 
+    "user": &comment.user.to_string(),
+    "post": &comment.post.to_string(),
+    "parent": &comment.parent.to_string(),
+    "content": &comment.content, 
+  });
+  msg!("LOGS_SEND_COMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
+
   Ok(())
 }
 
@@ -27,6 +38,13 @@ pub fn update_comment(ctx: Context<UpdateComment>, new_content: String) -> Resul
   comment.state = Some(CommentState::Edited);
   comment.content = new_content;
 
+  let account_info = &comment.to_account_info();
+  let logs = json!({
+    "key": account_info.key.to_string(), 
+    "content": &comment.content, 
+  });
+  msg!("LOGS_UPDATE_COMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
+
   Ok(())
 }
 
@@ -35,6 +53,13 @@ pub fn delete_comment(ctx: Context<DeleteComment>) -> Result<()> {
 
   comment.state = Some(CommentState::Deleted);
   comment.content = "".to_string();
+
+  let account_info = &comment.to_account_info();
+  let logs = json!({
+    "key": account_info.key.to_string(), 
+    "content": &comment.content, 
+  });
+  msg!("LOGS_DELETE_COMMENT::{:?}", serde_json::to_string_pretty(&logs)); 
 
   Ok(())
 }

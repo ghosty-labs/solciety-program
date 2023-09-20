@@ -41,7 +41,7 @@ const main = async () => {
   const userTwo = solanaWeb3.Keypair.generate();
 
   const post = await program.methods
-    .sendPost("Tag3", "Content Example 3")
+    .sendPost("Tag7", "Content Example 7")
     .accounts({
       post: userTwo.publicKey,
       user: user.publicKey,
@@ -50,6 +50,7 @@ const main = async () => {
     .signers([userTwo])
     .rpc();
 
-  console.log("POST : ", post);
+  // const sign = await connection.getSignatureStatus('2BsbV6FfojtvQsWRkrBueXcoPg8J7yV5fTTs9u1xrjTXWFuFkH2rjkeNu6DUDAmkRutcEeBGRjqjYf6YP6PjYjjh')
+  // console.log("POST : ", post);
 };
 main();

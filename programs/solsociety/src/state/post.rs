@@ -1,12 +1,14 @@
 use anchor_lang::prelude::*;
 
 #[account]
+#[derive(Debug)]
 pub struct Post {
   pub user: Pubkey,
   pub timestamp: i64,
   pub state: Option<PostState>,
   pub tag: String,
   pub content: String,
+  pub image: String
 }
 
 #[derive(Accounts)]
@@ -32,7 +34,7 @@ pub struct DeletePost<'info> {
   pub user: Signer<'info>
 }
 
-#[derive(AnchorSerialize, AnchorDeserialize, Clone, PartialEq, Eq)]
+#[derive(AnchorSerialize, AnchorDeserialize, Clone, PartialEq, Eq, Debug)]
 pub enum PostState {
   Edited,
   Deleted,

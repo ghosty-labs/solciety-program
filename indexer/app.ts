@@ -16,7 +16,7 @@ const sleep = (ms: number) => {
     "6sTexXR4daCeaGPL6dBpaVhadBMjU9fMkpUhSP4MGEEs"
   );
   const subscriptionId = solanaConnection.onLogs(ACCOUNT_TO_WATCH, (result) => {
-    console.log(result);
+    console.log("LOGS : ", result);
   });
   console.log("Starting web socket, subscription ID: ", subscriptionId);
   await sleep(10000); //Wait 10 seconds for Socket Testing
