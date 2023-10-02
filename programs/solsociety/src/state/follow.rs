@@ -11,7 +11,7 @@ pub struct Follow {
 
 #[derive(Accounts)]
 pub struct FollowUser<'info> {
-  #[account(init, payer = user, space = 8 + 32 + 32 + 8)]
+  #[account(init, payer = user, space = 8 + 32 + 32 + 8 + 1)]
   pub follow: Account<'info, Follow>,
   #[account(mut)]
   pub user: Signer<'info>,

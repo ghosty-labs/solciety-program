@@ -50,13 +50,25 @@ const main = async () => {
   //   .signers([userTwo])
   //   .rpc();
 
+  // await program.methods
+  //   .sendComment(
+  //     new solanaWeb3.PublicKey("AVcoemRHVnuytzQHmDcPd3p8ngfA751z2F9mxZoddrWb"),
+  //     "Comment 5 😡😄",
+  //     new solanaWeb3.PublicKey("AVcoemRHVnuytzQHmDcPd3p8ngfA751z2F9mxZoddrWb")
+  //   )
+  //   .accounts({ comment: userTwo.publicKey })
+  //   .signers([userTwo])
+  //   .rpc();
+
   await program.methods
-    .sendComment(
-      new solanaWeb3.PublicKey("AVcoemRHVnuytzQHmDcPd3p8ngfA751z2F9mxZoddrWb"),
-      "Comment 5 😡😄",
-      new solanaWeb3.PublicKey("AVcoemRHVnuytzQHmDcPd3p8ngfA751z2F9mxZoddrWb")
+    .followUser(
+      new solanaWeb3.PublicKey("ANwvF5jduUnY7unZin42NxB5cz4ctFqEmcVt5nWekpFq")
     )
-    .accounts({ comment: userTwo.publicKey })
+    .accounts({
+      follow: userTwo.publicKey,
+      user: user.publicKey,
+      systemProgram: solanaWeb3.SystemProgram.programId,
+    })
     .signers([userTwo])
     .rpc();
 
