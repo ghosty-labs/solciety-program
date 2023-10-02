@@ -34,4 +34,8 @@ pub mod solsociety {
   pub fn delete_comment(ctx: Context<DeleteComment>) -> Result<()> {
     instructions::delete_comment(ctx)
   }
+
+  pub fn follow_user(ctx: Context<FollowUser>, following: Pubkey) -> Result<()> {
+    instructions::follow_user(ctx, following)
+  }
 }

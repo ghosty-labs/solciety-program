@@ -40,13 +40,23 @@ const main = async () => {
 
   const userTwo = solanaWeb3.Keypair.generate();
 
-  const post = await program.methods
-    .sendPost("Tag8", "Content Example 8")
-    .accounts({
-      post: userTwo.publicKey,
-      user: user.publicKey,
-      systemProgram: solanaWeb3.SystemProgram.programId,
-    })
+  // const post = await program.methods
+  //   .sendPost("Tag33", "Content Example 33")
+  //   .accounts({
+  //     post: userTwo.publicKey,
+  //     user: user.publicKey,
+  //     systemProgram: solanaWeb3.SystemProgram.programId,
+  //   })
+  //   .signers([userTwo])
+  //   .rpc();
+
+  await program.methods
+    .sendComment(
+      new solanaWeb3.PublicKey("AVcoemRHVnuytzQHmDcPd3p8ngfA751z2F9mxZoddrWb"),
+      "Comment 5 😡😄",
+      new solanaWeb3.PublicKey("AVcoemRHVnuytzQHmDcPd3p8ngfA751z2F9mxZoddrWb")
+    )
+    .accounts({ comment: userTwo.publicKey })
     .signers([userTwo])
     .rpc();
 
