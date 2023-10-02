@@ -15,6 +15,7 @@ pub fn unfollow_user(ctx: Context<UnfollowUser>, unfollowing: Pubkey) -> Result<
   let account_info = &follow.to_account_info();
   let logs = json!({
     "key": account_info.key.to_string(),
+    "user": &follow.user.to_string(),
     "unfollowing": &follow.unfollowing.to_string(),
     "state": &follow.state,
     "timestamp": &follow.timestamp

@@ -15,6 +15,7 @@ pub fn follow_user(ctx: Context<FollowUser>, following: Pubkey) -> Result<()> {
   let account_info = &follow.to_account_info();
   let logs = json!({
     "key": account_info.key.to_string(),
+    "user": &follow.user.to_string(),
     "following": &follow.following.to_string(),
     "state": &follow.state,
     "timestamp": &follow.timestamp
