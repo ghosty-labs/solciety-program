@@ -38,4 +38,8 @@ pub mod solsociety {
   pub fn follow_user(ctx: Context<FollowUser>, following: Pubkey) -> Result<()> {
     instructions::follow_user(ctx, following)
   }
+
+  pub fn unfollow_user(ctx: Context<UnfollowUser>, unfollowing: Pubkey) -> Result<()> {
+    instructions::unfollow_user(ctx, unfollowing)
+  }
 }
