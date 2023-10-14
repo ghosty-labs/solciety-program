@@ -1,4 +1,4 @@
-import { Connection, PublicKey, LAMPORTS_PER_SOL } from "@solana/web3.js";
+import { Connection, PublicKey } from "@solana/web3.js";
 
 const WSS_ENDPOINT =
   "wss://aged-cool-shard.solana-devnet.discover.quiknode.pro/63e5d459890844fd35c95e5872eb460332d8f25d/";
@@ -13,7 +13,7 @@ const sleep = (ms: number) => {
 
 (async () => {
   const ACCOUNT_TO_WATCH = new PublicKey(
-    "6sTexXR4daCeaGPL6dBpaVhadBMjU9fMkpUhSP4MGEEs"
+    "6D6iFn2LtDH2ZSNz8DgtudTjKPNhD1fypoF374P7FFwX"
   );
   const subscriptionId = solanaConnection.onLogs(ACCOUNT_TO_WATCH, (result) => {
     console.log("LOGS : ", result);
